@@ -57,7 +57,6 @@ export default {
 </script>
 
 <style scoped>
-/* 스타일은 기존의 설정을 사용합니다. 추가적으로 아이템 수정 관련 스타일을 추가할 수 있습니다. */
 .item-content {
   cursor: pointer;
 }

@@ -1,19 +1,37 @@
 <template>
   <div id="app">
     <input-line @submit="handleSubmit"></input-line>
-    <item-list></item-list> 
+    <dropdown-menu></dropdown-menu>
+    <item-list v-if="selectedDropdown === ''"></item-list>
+    <check-list v-else-if="selectedDropdown === '체크리스트'"></check-list>
+    <radio-list v-else-if="selectedDropdown === '라디오'"></radio-list>
+    <drop-list v-else-if="selectedDropdown === '드롭다운'"></drop-list>
+
   </div>
 </template>
 
 <script>
 import InputLine from './components/InputLine.vue';
-import ItemList from './components/ItemList.vue';
+import ItemList from './components/lists/ItemList.vue';
+import DropdownMenu from './components/DropDownMenu.vue';
+import CheckList from './components/lists/ChList.vue';
+import RadioList from './components/lists/RaList.vue';
+import DropList from './components/lists/DropList.vue'; 
 
 export default {
   name: 'App',
   components: {
     InputLine,
     ItemList,
+    DropdownMenu,
+    CheckList,
+    RadioList,
+    DropList,
+  },
+    computed: {
+    selectedDropdown() {
+      return this.$store.getters.selectedDropdown;
+    }
   },
   methods: {
     handleSubmit(value) {
